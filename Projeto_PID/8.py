@@ -30,7 +30,7 @@ root.title("Calculadora de PID")
 
 # Cria um rótulo com o exemplo de valores
 example_label = tk.Label(root, text="Exemplo K = 1, t = 2.125 e θ = 0.5")
-example_label.grid(row=0, column=0, columnspan=2)  # Coloque-o na parte superior da janela
+example_label.grid(row=0, column=0, columnspan=2)  # Coloca na parte superior da janela
 
 # Cria os rótulos e campos de entrada para os parâmetros
 label_K = tk.Label(root, text="K:")
