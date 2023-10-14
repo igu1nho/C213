@@ -1,0 +1,45 @@
+plot(t,saida,t,degrau)
+title('Step Response')
+xlabel('Time(seconds)')
+ylabel('Amplitude')
+grid on
+
+plot(t,saida,t,degrau)
+hold on
+title('Step Response')
+xlabel('Time(seconds)')
+ylabel('Amplitude')
+ 
+hold on
+sys_a = tf([1], [2 1])
+set(sys_a, 'InputDelay',0.5)
+step(sys_a*9,'g--')
+grid on
+ 
+sys_aberto = tf([1], [2 1])
+sys_fechado = feedback(sys_aberto,1)
+set(sys_fechado, 'InputDelay',0.5)
+step(sys_fechado*9,'p--')
+
+sys = tf([1], [2.125 1])
+sys_atraso = tf([1], [2.125 1])
+set(sys_atraso, 'InputDelay',0.5)
+sys_atraso
+step(sys*9,'m-.',sys_atraso*9,'g--')
+legend('original','estimada')
+
+sys_aberto = tf([1], [2.125 1])
+sys_fechado = feedback(sys_aberto,1)
+set(sys_fechado, 'InputDelay',0.5)
+step(sys_aberto*9, 'y-',sys_fechado*9,'c--')
+legend('malha_a','malha_f')
+
+func = tf([1], [2.125 1], 'InputDelay', 0.5);
+PIDCHR1 = pidstd(2.55, 2.125, 0.25);
+PIDCOHEN_COON = pidstd(5.916, 1.122, 0.174);
+resposta_CHR1 = feedback(func * PIDCHR1, 1);
+resposta_COON = feedback(func * PIDCOHEN_COON, 1);
+hold on
+grid on
+step(resposta_CHR1, resposta_COON)
+legend('CHR1', 'COHEN_COON')
