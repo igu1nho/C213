@@ -1,4 +1,4 @@
-# Trabalho 1 de Sistemas Embarcado(C213)
+# Trabalhos de Sistemas Embarcado(C213)
 
 ## Controle Clássico
 ## Grupo 9
